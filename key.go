@@ -37,13 +37,13 @@ func decodeKey(keyraw string) ([]byte, error) {
 
 func setPrivateKey(opts docopt.Opts) {
 	keyraw := opts["<key>"].(string)
-	keyval, err := decodeKey(keyraw)
+	_, err := decodeKey(keyraw)
 	if err != nil {
 		log.Printf("Failed to parse private key: %s\n", err.Error())
 		return
 	}
 
-	config.PrivateKey = string(keyval)
+	config.PrivateKey = string(keyraw)
 }
 
 func showPublicKey(opts docopt.Opts) {
